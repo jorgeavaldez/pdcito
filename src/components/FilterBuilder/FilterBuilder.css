@@ -1,0 +1,21 @@
+.FilterBuilderContainer{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.FilterBuilderForm {
+}
+
+.FilterFormLabel {
+  display: block;
+}
+
+.FilterFormSubmit {
+  display: block;
+}
+
+.FilterBody {
+  display: block;
+}

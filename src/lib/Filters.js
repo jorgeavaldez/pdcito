@@ -1,5 +1,9 @@
 import Wad from 'web-audio-daw';
 
+const isFunction = (functionToCheck) => {
+  return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
+};
+
 const getRangeNormalizer = (targetMin, targetMax) => (min, max, value) => {
   return (targetMax - targetMin)/(max - min)*(value-max) + targetMax
 };
@@ -97,5 +101,46 @@ export const getFilterFrame = (filterType) => {
 };
 
 export const constructFilter = (filterFrame, palette) => {
+  console.dir(palette);
+  // get swatch with the highest use in the image
+  const mostPopulated = Object.keys(palette).reduce((acc, p) => {
+    const swatch = palette[p];
+    const pop = swatch.getPopulation();
 
+    if (!acc || acc.getPopulation() < pop) return swatch;
+  }, null);
+
+  const hsl = mostPopulated.getHsl();
+  const rgb = mostPopulated.getRgb();
+
+  // some of the parameters don't need values
+  const frameParams = Object.keys(filterFrame).reduce((acc, param) => {
+    if (isFunction(filterFrame[param])) return [...acc, param];
+    else return acc;
+  }, []);
+
+  const finalFilter = {};
+
+  for(let i = 0; i < frameParams.length; i++) {
+    const currParam = frameParams[i];
+    const normalizer = filterFrame[currParam];
+
+    // use hsl values
+    if (i < 3) {
+      finalFilter[currParam] = normalizer(0, 1, hsl[i]);
+    }
+
+    // use rgb values
+    else {
+      finalFilter[currParam] = normalizer(0, 255, rgb[i - 3]);
+    }
+  }
+
+  // now we need to add the ones that are missing
+  Object.keys(filterFrame).forEach((param) => {
+    if (!isFunction(filterFrame[param]))
+      finalFilter[param] = filterFrame[param];
+  });
+
+  return finalFilter;
 };

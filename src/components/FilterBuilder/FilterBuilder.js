@@ -68,12 +68,8 @@ class FilterBuilder extends Component {
     const filterType = this.state.filterParams.type;
     const filterFrame = getFilterFrame(filterType);
     const filterBody = constructFilter(filterFrame, this.state.imagePalette);
-    const filter = {
-      tuna: {}
-    };
 
-    filter.tuna[filterType] = filterBody;
-    this.setState({ filter });
+    this.setState({ filter: filterBody });
   };
 
   render() {
@@ -96,7 +92,9 @@ class FilterBuilder extends Component {
           }
 
           {this.state.filter ?
-            <NoiseyBoy /> :
+            <NoiseyBoy
+              filter={this.state.filter}
+              filterType={this.state.filterParams.type} /> :
             null
           }
         </div>

@@ -1,11 +1,19 @@
-import Wad from 'web-audio-daw';
+import Tuna from 'tunajs';
 
 const isFunction = (functionToCheck) => {
   return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
 };
 
-const getRangeNormalizer = (targetMin, targetMax) => (min, max, value) => {
-  return (targetMax - targetMin)/(max - min)*(value-max) + targetMax
+const getRangeNormalizer = (targetMin, targetMax, transform) => (min, max, value) => {
+  const normalized = (targetMax - targetMin)/(max - min)*(value-max) + targetMax;
+
+  // transform allows us to pass in a rounding function or something similar
+  // the transform is applied after normalization
+  if (transform) {
+    return transform(normalized);
+  }
+
+  return normalized;
 };
 
 export const FILTER_TYPES = [
@@ -50,7 +58,7 @@ const FILTER_FRAMES = {
     outputGain: getRangeNormalizer(0, 1),
     drive: getRangeNormalizer(0, 1),
     curveAmount: getRangeNormalizer(0, 1),
-    algorithmIndex: getRangeNormalizer(0, 5),
+    algorithmIndex: getRangeNormalizer(0, 5, Math.round),
     bypass: 0
   },
   Compressor: {
@@ -79,9 +87,20 @@ const FILTER_FRAMES = {
     bypass: 0
   },
   Bitcrusher: {
-    bits: getRangeNormalizer(1, 16),
+    bits: getRangeNormalizer(1, 16, Math.round),
     normfreq: getRangeNormalizer(0, 1),
-    bufferSize: getRangeNormalizer(256, 16384)
+    bufferSize: getRangeNormalizer(256, 16384, (number) => {
+      const choices = [256, 512, 1024, 2048, 4096, 8192, 16384];
+
+      let curr = choices[0];
+      for (let i = 0; i < choices.length; i++) {
+        if (Math.abs(number - choices[i]) < Math.abs(number - curr)) {
+          curr = choices[i];
+        }
+      }
+
+      return curr;
+    })
   },
   MoogFilter: {
     cutoff: getRangeNormalizer(0, 1),
@@ -101,14 +120,20 @@ export const getFilterFrame = (filterType) => {
 };
 
 export const constructFilter = (filterFrame, palette) => {
-  console.dir(palette);
   // get swatch with the highest use in the image
-  const mostPopulated = Object.keys(palette).reduce((acc, p) => {
-    const swatch = palette[p];
-    const pop = swatch.getPopulation();
+  const swatches = Object.values(palette);
 
-    if (!acc || acc.getPopulation() < pop) return swatch;
-  }, null);
+  let maxPop = -1;
+  let maxPopIndex = -1;
+  for (let i = 0; i < swatches.length; i++) {
+    const currPop = swatches[i].getPopulation();
+    if (currPop > maxPop) {
+      maxPop = currPop;
+      maxPopIndex = i;
+    }
+  }
+
+  const mostPopulated = swatches[maxPopIndex];
 
   const hsl = mostPopulated.getHsl();
   const rgb = mostPopulated.getRgb();
@@ -143,4 +168,14 @@ export const constructFilter = (filterFrame, palette) => {
   });
 
   return finalFilter;
+};
+
+export const createTuna = (audioContext) => {
+  return new Tuna(audioContext);
+};
+
+export const createTunaFilter = (tuna, filterType, filterBody) => {
+  console.dir(filterBody);
+  const filterConstructor = tuna[filterType];
+  return new filterConstructor(filterBody);
 };

@@ -3782,7 +3782,7 @@ jest@20.0.4:
   dependencies:
     jest-cli "^20.0.4"
 
-jimp@*, jimp@^0.2.27, jimp@^0.2.28:
+jimp@*, jimp@^0.2.27:
   version "0.2.28"
   resolved "https://registry.yarnpkg.com/jimp/-/jimp-0.2.28.tgz#dd529a937190f42957a7937d1acc3a7762996ea2"
   dependencies:
@@ -6331,6 +6331,10 @@ tty-browserify@0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/tty-browserify/-/tty-browserify-0.0.0.tgz#a157ba402da24e9bf957f9aa69d524eed42901a6"
 
+tunajs@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/tunajs/-/tunajs-1.0.0.tgz#488f00a0fbe95a4c2e30aaa910476bdbd5f27258"
+
 tunnel-agent@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/tunnel-agent/-/tunnel-agent-0.6.0.tgz#27a5dea06b36b04a0a9966774b290868f0fc40fd"
@@ -6581,10 +6585,6 @@ wbuf@^1.1.0, wbuf@^1.7.2:
   resolved "https://registry.yarnpkg.com/wbuf/-/wbuf-1.7.2.tgz#d697b99f1f59512df2751be42769c1580b5801fe"
   dependencies:
     minimalistic-assert "^1.0.0"
-
-web-audio-daw@^2.7.3:
-  version "2.7.3"
-  resolved "https://registry.yarnpkg.com/web-audio-daw/-/web-audio-daw-2.7.3.tgz#906e04bb5727ec83c438ef98b96e19d184195056"
 
 webidl-conversions@^3.0.0:
   version "3.0.1"

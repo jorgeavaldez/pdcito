@@ -70,7 +70,7 @@ class Camera extends Component {
 
         <div className='SnapshotContainer'>
           {this.state.imageSrc ?
-            <img className='Snapshot' src={this.state.imageSrc} /> :
+            <img className='Snapshot' src={this.state.imageSrc} alt="lookin good ;)" /> :
             <div />
           }
 

@@ -114,8 +114,8 @@ class FilterBuilder extends Component {
                 Speak into the microphone and listen to the effects!
               </span>
               <div className="HomeGoButton">
-                <Link className="HomeGoLink" to="/">
-                  Take it again, from the top...
+                <Link className="HomeGoLink" to="/camera">
+                  Try another selfie
                 </Link>
               </div>
             </div> : null

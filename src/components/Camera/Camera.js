@@ -54,31 +54,31 @@ class Camera extends Component {
     }
 
     return (
-      <div className='Camera'>
-        <div className='CameraContainer'>
-          <Webcam
-            audio={true}
-            ref={this.setRef}
-            height={this.state.vwHeight / 2}
-            width={this.state.vwWidth / 2}
-            screenshotFormat='image/jpeg' />
+      <div className='CameraAlignmentContainer'>
+        <div className='Camera'>
+          <div className='CameraContainer' onClick={this.capture}>
+            <Webcam
+              className="Webcam"
+              audio={false}
+              ref={this.setRef}
+              screenshotFormat='image/jpeg' />
 
-          <button className='CaptureButton' onClick={this.capture}>
-            Snap!
-          </button>
-        </div>
+            {
+              !this.state.imageSrc ?
+              <span className="CameraMessageBox">Tap your face to take a picture!</span> :
+              <span className="CameraMessageBox">Tap again to take another one 🗝️</span>
+            }
+          </div>
 
-        <div className='SnapshotContainer'>
-          {this.state.imageSrc ?
-            <img className='Snapshot' src={this.state.imageSrc} alt="lookin good ;)" /> :
-            <div />
-          }
-
-          {this.state.imageSrc && this.props.confirmHandler ?
-            <button className='SnapshotConfirmButton' onClick={this.confirmSnapshot}>
-              Confirm
-            </button> :
-            <div />
+          {
+            this.state.imageSrc ?
+            <div className='SnapshotContainer' onClick={this.confirmSnapshot}>
+              {this.state.imageSrc ?
+                <img className='Snapshot' src={this.state.imageSrc} alt="lookin good ;)" /> :
+                <div />
+              }
+              <span className="CameraMessageBox">... Or tap the still to move on!</span>
+            </div> : null
           }
         </div>
       </div>

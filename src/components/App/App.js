@@ -7,6 +7,7 @@ import {
 
 import './App.css';
 
+import Home from './Home/Home';
 import { Camera, FilterBuilder } from '../';
 
 class App extends Component {
@@ -25,7 +26,9 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Route exact path="/" render={props => (
+          <Route exact path="/" component={Home} />
+
+          <Route path="/camera" render={props => (
             <Camera confirmHandler={this.setImage} {...props} />
           )} />
 

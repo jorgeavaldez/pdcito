@@ -1,0 +1,94 @@
+span {
+  display: block;
+  font-size: 1.5rem;
+  font-family: 'Arimo';
+  color: hsl(0, 0%, 100%);
+}
+
+.Home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.HomeContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}
+
+.HomeText {
+  background-color: #ed55b2;
+  padding: 2rem;
+
+  border: 0;
+  box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
+}
+
+.HomeTitle {
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: hsl(0, 0%, 100%, 0.85);
+  font-family: 'Pacifico';
+}
+
+.HomeDescriptionContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.EmojiContainer > span {
+  border-radius: 50%;
+  background: #45e3ff;
+  padding: 0.3rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+}
+
+.SubTextContainer {
+  margin-left: 1vw;
+}
+
+.SubTextContainer > span {
+  line-height: 3rem;
+}
+
+.HomeSubText {
+  font-weight: 400;
+  color: hsla(0, 0%, 100%, 0.8);
+}
+
+.HomeGoButton {
+  margin-top: 2rem;
+  background-color: #ed2e87;
+  border: none;
+  width: 100%;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  text-align: center;
+
+  transition-duration: 0.2s;
+  color: hsla(0, 0%, 100%, 0.6);
+  font-size: 1.5rem;
+}
+
+.HomeGoButton:hover {
+  transition-duration: 0.2s;
+  cursor: pointer;
+  box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
+}
+
+.HomeGoLink {
+  text-decoration: none;
+  font-family: 'Arimo';
+  color: hsla(0, 0%, 100%, 0.8);
+}

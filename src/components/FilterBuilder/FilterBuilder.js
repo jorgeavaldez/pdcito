@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import './FilterBuilder.css';
 
@@ -79,25 +80,45 @@ class FilterBuilder extends Component {
           <div className="FilterBuilderBody">
             <form className="FilterBuilderForm" onSubmit={this.buildFilter}>
               <label>
-                <span className="FilterFormLabel">Choose a Filter Type</span>
+                <span className="FilterFormLabel">
+                  <span className="FilterEmojiBadge">
+                    🙇
+                  </span>
+                  Choose a filter type!
+                </span>
                 <FilterTypeField
                   value={this.state.filterParams.type}
                   onChange={this.filterTypeHandler} />
               </label>
               <input className="FilterFormSubmit" type="submit" value="Noise Me" />
             </form>
-
-            {this.state.filter ?
-              <FilterBody filter={this.state.filter} /> :
-              null
-            }
           </div>
 
+          <span className="FilterFormMessage">
+            <span className="FilterEmojiBadge">
+              💫
+            </span>
+            Keep pressing 'Noise me' to add more effects and chain them together!
+          </span>
+
           {this.state.filter ?
-            <NoiseyBoy
-              filter={this.state.filter}
-              filterType={this.state.filterParams.type} /> :
-            null
+            <div>
+              <NoiseyBoy
+                filter={this.state.filter}
+                filterType={this.state.filterParams.type} />
+
+              <span className="FilterFormMessage">
+                <span className="FilterEmojiBadge">
+                  🎙️
+                </span>
+                Speak into the microphone and listen to the effects!
+              </span>
+              <div className="HomeGoButton">
+                <Link className="HomeGoLink" to="/">
+                  Take it again, from the top...
+                </Link>
+              </div>
+            </div> : null
           }
         </div>
       );

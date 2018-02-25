@@ -44,6 +44,21 @@
   box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
+.CameraEmojiBadge {
+  display: inline;
+  border-radius: 50%;
+  background: #45e3ff;
+  padding: 0.3rem;
+  margin-right: 1rem;
+  border: 0;
+  box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
+}
+
+.keybadge {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
 .Webcam {
   width: 40vw;
   height: auto;

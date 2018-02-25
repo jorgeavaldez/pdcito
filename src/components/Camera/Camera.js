@@ -65,8 +65,18 @@ class Camera extends Component {
 
             {
               !this.state.imageSrc ?
-              <span className="CameraMessageBox">Tap your face to take a picture!</span> :
-              <span className="CameraMessageBox">Tap again to take another one 🗝️</span>
+              <span className="CameraMessageBox">
+                <span className="CameraEmojiBadge">
+                  👆
+                </span>
+                Tap your face to take a picture!
+              </span> :
+              <span className="CameraMessageBox">
+                Tap again to take another one
+                <span className="CameraEmojiBadge keybadge">
+                🗝️
+                </span>
+              </span>
             }
           </div>
 
@@ -77,7 +87,12 @@ class Camera extends Component {
                 <img className='Snapshot' src={this.state.imageSrc} alt="lookin good ;)" /> :
                 <div />
               }
-              <span className="CameraMessageBox">... Or tap the still to move on!</span>
+              <span className="CameraMessageBox">
+                <span className="CameraEmojiBadge">
+                  👆
+                </span>
+                ... Or tap the still to move on!
+              </span>
             </div> : null
           }
         </div>

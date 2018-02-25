@@ -1,0 +1,51 @@
+.Camera {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+
+  text-align: left;
+
+}
+
+.CameraContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  text-align: center;
+
+  max-width: 50%;
+  max-height: 50%;
+}
+
+.CaptureButton {
+  width: 4rem;
+  height: 2rem;
+}
+
+.SnapshotContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+
+  text-align: center;
+
+  width: 50vw;
+  max-width: 50%;
+}
+
+.Snapshot {
+  height: 50vh;
+  width: auto;
+}
+
+.SnapshotConfirmButton {
+  width: 4rem;
+  height: 2rem;
+}

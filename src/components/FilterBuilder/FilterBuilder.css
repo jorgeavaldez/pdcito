@@ -1,21 +1,71 @@
+span {
+  display: block;
+  font-family: 'Arimo';
+  color: hsl(0, 0%, 100%);
+}
+
 .FilterBuilderContainer{
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   flex-direction: column;
+  height: 100vh;
+}
+
+.FilterBuilderBody {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-around;
+  flex-direction: row;
+  width: 50vw;
 }
 
 .FilterBuilderForm {
+  display: block;
+  font-size: 1.5rem;
+  font-family: 'Arimo';
+  color: hsl(0, 0%, 100%);
+
+  width: auto;
+
+  background-color: #ed55b2;
+  margin-top: 2rem;
+  padding: 2rem;
+
+  border: 0;
+  box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
 .FilterFormLabel {
-  display: block;
+  margin-bottom: 1rem;
 }
 
 .FilterFormSubmit {
-  display: block;
+  margin-top: 2rem;
+  background-color: #ed2e87;
+  border: none;
+  width: 100%;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  text-align: center;
+
+  transition-duration: 0.2s;
+  color: hsla(0, 0%, 100%, 0.8);
+  font-size: 1.5rem;
+}
+
+.FilterFormSubmit:hover {
+  transition-duration: 0.2s;
+  cursor: pointer;
+  box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
 .FilterBody {
-  display: block;
+  color: hsl(0, 0%, 100%);
+  background-color: #ed55b2;
+  border: 0;
+  box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
+
+  padding: 1rem;
 }

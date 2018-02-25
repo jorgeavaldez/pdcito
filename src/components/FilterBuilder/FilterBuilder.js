@@ -11,7 +11,7 @@ import {
 } from '../../lib';
 
 const FilterTypeField = ({ value, onChange }) => (
-  <select value={value} onChange={onChange}>
+  <select className="FilterField" value={value} onChange={onChange}>
     {
       FILTER_TYPES.map(f => {
         return <option key={f} value={f}>{f}</option>
@@ -76,20 +76,22 @@ class FilterBuilder extends Component {
     if (this.state.imagePalette) {
       return (
         <div className="FilterBuilderContainer">
-          <form className="FilterBuilderForm" onSubmit={this.buildFilter}>
-            <label>
-              <span className="FilterFormLabel">Filter Type</span>
-              <FilterTypeField
-                value={this.state.filterParams.type}
-                onChange={this.filterTypeHandler} />
-            </label>
-            <input className="FilterFormSubmit" type="submit" value="Noise Me" />
-          </form>
+          <div className="FilterBuilderBody">
+            <form className="FilterBuilderForm" onSubmit={this.buildFilter}>
+              <label>
+                <span className="FilterFormLabel">Choose a Filter Type</span>
+                <FilterTypeField
+                  value={this.state.filterParams.type}
+                  onChange={this.filterTypeHandler} />
+              </label>
+              <input className="FilterFormSubmit" type="submit" value="Noise Me" />
+            </form>
 
-          {this.state.filter ?
-            <FilterBody filter={this.state.filter} /> :
-            null
-          }
+            {this.state.filter ?
+              <FilterBody filter={this.state.filter} /> :
+              null
+            }
+          </div>
 
           {this.state.filter ?
             <NoiseyBoy

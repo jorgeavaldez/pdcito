@@ -38,9 +38,6 @@ class NoiseyBoy extends Component {
   render() {
     return (
       <div className="NoiseyBoyContainer">
-        <button onClick={this.startRecording}>
-          PULL THE LEVER KRONK!
-        </button>
       </div>
     );
   }

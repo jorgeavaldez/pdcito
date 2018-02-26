@@ -25,7 +25,6 @@ export const FILTER_TYPES = [
   'Tremolo',
   'WahWah',
   'Bitcrusher',
-  'MoogFilter',
   'PingPongDelay'
 ];
 
@@ -101,11 +100,6 @@ const FILTER_FRAMES = {
 
       return curr;
     })
-  },
-  MoogFilter: {
-    cutoff: getRangeNormalizer(0, 1),
-    resonance: getRangeNormalizer(0, 4),
-    bufferSize: getRangeNormalizer(256, 16384)
   },
   PingPongDelay: {
     wetLevel: getRangeNormalizer(0, 1),

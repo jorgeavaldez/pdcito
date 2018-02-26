@@ -20,6 +20,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
 
   text-align: center;
 
@@ -75,7 +76,7 @@
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
   text-align: center;
 

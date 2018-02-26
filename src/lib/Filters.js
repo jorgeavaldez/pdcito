@@ -1,5 +1,7 @@
 import Tuna from 'tunajs';
 
+// helper function, just used to separate the normalizers from the precalculated
+// constant parameters
 const isFunction = (functionToCheck) => {
   return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
 };
@@ -169,7 +171,6 @@ export const createTuna = (audioContext) => {
 };
 
 export const createTunaFilter = (tuna, filterType, filterBody) => {
-  console.dir(filterBody);
   const filterConstructor = tuna[filterType];
   return new filterConstructor(filterBody);
 };

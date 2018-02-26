@@ -32,7 +32,7 @@ const Home = () => {
 
           <div className="HomeGoButton">
             <Link className="HomeGoLink" to="/camera">
-              why not? it's free!
+              { "why not? it's free!" }
             </Link>
           </div>
         </div>
